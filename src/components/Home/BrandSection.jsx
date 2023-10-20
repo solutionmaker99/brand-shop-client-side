@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 const BrandSection = ({ product }) => {
   return (
     <Link to={`product/${product._id}`}>
-      <div className="card card-compact w-96 bg-base-100 shadow-xl">
+      <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[456px]">
         <figure>
-          <img src={product.photo} alt="Product" />
+          <img className="max-h-[20rem]" src={product.photo} alt="Product" />
         </figure>
         <div className="card-body">
           <h2 className="text-2xl font-bold text-center my-4">

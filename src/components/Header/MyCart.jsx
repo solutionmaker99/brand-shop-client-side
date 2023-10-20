@@ -4,16 +4,20 @@ import { Link, useLoaderData } from "react-router-dom";
 const MyCart = () => {
   const products = useLoaderData();
   return (
-    <div>
+    <div className="md:mx-32">
       <h2 className="text-4xl text-center font-bold mt-10">
         My Added Cart {products.length}
       </h2>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
         {products.map((product) => (
           <div key={product._id}>
-            <div className="card card-compact w-96 bg-base-100 shadow-xl min-h-[657px]">
+            <div className="card card-compact w-96 bg-base-100 shadow-xl">
               <figure>
-                <img src={product.photo} alt="Product" />
+                <img
+                  className="max-h-[20rem]"
+                  src={product.photo}
+                  alt="Product"
+                />
               </figure>
               <div className="card-body">
                 <h2 className="text-3xl text-center font-semibold mt-4">
