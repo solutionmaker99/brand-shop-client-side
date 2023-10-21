@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUpUser } = useContext(AuthContext);
@@ -14,6 +15,29 @@ const SignUp = () => {
     const email = form.get("email");
     const password = form.get("password");
     console.log(name, photo, email, password);
+
+    if (password.length < 6) {
+      Swal.fire({
+        title: "Not Valid",
+        text: "Please Input Valid Password",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    } else if (password.search(/[A-Z]/i) < 0) {
+      Swal.fire({
+        title: "Not Valid",
+        text: "Please Input at list one capital letter.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    } else if (password.search(/[!@#$%^&*]/i) < 0) {
+      Swal.fire({
+        title: "Not Valid",
+        text: "Please Input at list one special character.",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
 
     signUpUser(email, password)
       .then((res) => {

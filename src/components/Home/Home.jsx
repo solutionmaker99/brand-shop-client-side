@@ -45,7 +45,7 @@ const Home = () => {
         </h2>
 
         <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
-          {products.slice(0, 6).map((product) => (
+          {products.slice(0, 6)?.map((product) => (
             <BrandSection key={product._id} product={product} />
           ))}
         </div>

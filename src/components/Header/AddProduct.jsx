@@ -18,7 +18,7 @@ const AddProduct = () => {
 
     console.log(newProduct);
 
-    fetch("http://localhost:5000/coffee", {
+    fetch("http://localhost:5000/product", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),
@@ -29,14 +29,12 @@ const AddProduct = () => {
         if (data.insertedId) {
           Swal.fire({
             title: "Successful",
-            text: "Coffee added Product",
+            text: "Product added Successfully",
             icon: "success",
             confirmButtonText: "Ok",
           });
         }
       });
-
-    // console.log(newCoffee);
   };
 
   return (
