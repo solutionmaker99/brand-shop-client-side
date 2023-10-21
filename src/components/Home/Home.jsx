@@ -12,11 +12,7 @@ import img6 from "../../assets/img6.jpg";
 
 const Home = () => {
   const products = useLoaderData();
-  // const { photo, name } = product;
-  var sectionStyle = {
-    backgroundImage: "url(" + { bgImage } + ")",
-    backgroundSize: "cover",
-  };
+
   return (
     <div>
       <section
