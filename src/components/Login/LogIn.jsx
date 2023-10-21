@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 
 const LogIn = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googlePopUp } = useContext(AuthContext);
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -17,6 +17,10 @@ const LogIn = () => {
         console.log(res.user);
       })
       .catch((err) => console.log(err));
+  };
+
+  const handleGoogle = () => {
+    googlePopUp().then().catch();
   };
   return (
     <div className="hero min-h-screen bg-base-200">
@@ -56,9 +60,12 @@ const LogIn = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Please LogIn</button>
+              <button className="btn btn-primary mb-4">Please LogIn</button>
             </div>
           </form>
+          <button onClick={handleGoogle} className="btn mb-4">
+            Google Login
+          </button>
         </div>
       </div>
     </div>

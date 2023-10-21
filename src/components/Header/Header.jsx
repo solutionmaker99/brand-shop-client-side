@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import PrivateRoute from "../Route/PrivateRoute";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -15,17 +16,25 @@ const Header = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/addProduct">Add Product</NavLink>
+        <PrivateRoute>
+          <NavLink to="/addProduct">Add Product</NavLink>
+        </PrivateRoute>
       </li>
       <li>
-        <NavLink to="/myCart">My Cart</NavLink>
+        <PrivateRoute>
+          <NavLink to="/myCart">My Cart</NavLink>
+        </PrivateRoute>
       </li>
 
       <li>
-        <NavLink to="/logIn">Rout 1</NavLink>
+        <PrivateRoute>
+          <NavLink to="/about">About</NavLink>
+        </PrivateRoute>
       </li>
       <li>
-        <NavLink to="/signUp">Rout 2</NavLink>
+        <PrivateRoute>
+          <NavLink to="/contact">Contact</NavLink>
+        </PrivateRoute>
       </li>
     </>
   );
@@ -66,7 +75,11 @@ const Header = () => {
         <div className="navbar-end">
           {user ? (
             <div className="flex mr-3">
-              <img src={user.photo} alt="" />
+              <img
+                className="w-10 h-10 rounded-full mt-2"
+                src={user.photoURL}
+                alt=""
+              />
               <p>{user.name}</p>
               <button onClick={handleSignOut} className="btn">
                 Sign Out

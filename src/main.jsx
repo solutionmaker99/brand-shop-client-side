@@ -11,24 +11,44 @@ import LogIn from "./components/Login/LogIn";
 import SignUp from "./components/Sign Up/SignUp";
 import ProductDetail from "./components/Home/ProductDetail";
 import AuthProvider from "./provider/AuthProvider";
+import ProductDetails from "./components/Home/ProductDetails";
+import About from "./components/Route/About";
+import Contact from "./components/Route/Contact";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
+import PrivateRoute from "./components/Route/PrivateRoute";
+import UpdateCard from "./components/Route/UpdateCard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
         element: <Home />,
         loader: () => fetch("http://localhost:5000/product"),
       },
+
       {
         path: "product/:id",
         element: <ProductDetail />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
       {
         path: "/addProduct",
         element: <AddProduct />,
+      },
+      {
+        path: "updateCard/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCard />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
       {
         path: "/myCart",
@@ -40,8 +60,26 @@ const router = createBrowserRouter([
         element: <LogIn />,
       },
       {
-        path: "signUp",
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/signUp",
         element: <SignUp />,
+      },
+      {
+        path: "/productDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ProductDetails />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
     ],
   },
