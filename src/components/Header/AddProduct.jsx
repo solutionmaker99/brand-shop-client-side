@@ -18,7 +18,7 @@ const AddProduct = () => {
 
     console.log(newProduct);
 
-    fetch("http://localhost:5000/product", {
+    fetch("https://brand-shop-assignment-server-jade.vercel.app/product", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(newProduct),
