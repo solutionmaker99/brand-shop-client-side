@@ -47,8 +47,6 @@ const Home = () => {
         </div>
       </section>
 
-      {/* marquee */}
-
       <section className="my-20">
         <h1 className="text-center text-4xl font-semibold my-10">
           Out Product
@@ -62,8 +60,6 @@ const Home = () => {
           <img className="h-40 w-40 mr-20" src={img6} alt="" />
         </Marquee>
       </section>
-
-      {/* accordion */}
 
       <section className="mb-40">
         <h1 className="text-center text-4xl font-semibold my-10">
