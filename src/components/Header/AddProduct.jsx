@@ -1,3 +1,4 @@
+import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddProduct = () => {
@@ -18,23 +19,39 @@ const AddProduct = () => {
 
     console.log(newProduct);
 
-    fetch("https://brand-shop-assignment-server-jade.vercel.app/product", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(newProduct),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          Swal.fire({
-            title: "Successful",
-            text: "Product added Successfully",
-            icon: "success",
-            confirmButtonText: "Ok",
-          });
-        }
-      });
+    // using axios
+
+    axios.post("http://localhost:5000/product", newProduct).then((data) => {
+      if (data.data.insertedId) {
+        console.log("data added as a new product");
+        Swal.fire({
+          title: "Successful",
+          text: "Product added Successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      }
+    });
+
+    // using fetch
+
+    // fetch("http://localhost:5000/product", {
+    //   method: "POST",
+    //   headers: { "content-type": "application/json" },
+    //   body: JSON.stringify(newProduct),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       Swal.fire({
+    //         title: "Successful",
+    //         text: "Product added Successfully",
+    //         icon: "success",
+    //         confirmButtonText: "Ok",
+    //       });
+    //     }
+    //   });
   };
 
   return (

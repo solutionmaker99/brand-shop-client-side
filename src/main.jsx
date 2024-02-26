@@ -27,17 +27,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () =>
-          fetch("https://brand-shop-assignment-server-jade.vercel.app/product"),
+        loader: () => fetch("http://localhost:5000/product"),
       },
 
       {
         path: "product/:id",
         element: <ProductDetail />,
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-assignment-server-jade.vercel.app/product/${params.id}`
-          ),
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
       {
         path: "/addProduct",
@@ -51,9 +48,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-assignment-server-jade.vercel.app/product/${params.id}`
-          ),
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
       {
         path: "/myCart",
@@ -62,8 +57,7 @@ const router = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
-        loader: () =>
-          fetch("https://brand-shop-assignment-server-jade.vercel.app/product"),
+        loader: () => fetch("http://localhost:5000/product"),
       },
       {
         path: "/logIn",
@@ -89,9 +83,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(
-            `https://brand-shop-assignment-server-jade.vercel.app/product/${params.id}`
-          ),
+          fetch(`http://localhost:5000/product/${params.id}`),
       },
     ],
   },

@@ -26,14 +26,11 @@ const UpdateCard = () => {
     };
     console.log(updateProduct);
 
-    fetch(
-      `https://brand-shop-assignment-server-jade.vercel.app/product/${_id}`,
-      {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(updateProduct),
-      }
-    )
+    fetch(`http://localhost:5000/product/${_id}`, {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(updateProduct),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
